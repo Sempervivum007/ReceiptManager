@@ -1,0 +1,46 @@
+﻿<Window x:Class="ReceiptManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ReceiptManager"
+        mc:Ignorable="d"
+        Title="Управління витратами" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Row="0" Grid.Column="0" Content="Додати чек" Click="AddReceiptButton_Click" Width="150" Height="35" Margin="0,10,0,0" FontSize="16" VerticalAlignment="Top"/>
+        <Button Grid.Row="0" Grid.Column="1" Content="Редагувати чек" Click="EditReceiptButton_Click" Width="150" Height="35" FontSize="16" VerticalAlignment="Top" Margin="0,10,0,0"/>
+        <Button Grid.Row="0" Grid.Column="2" Content="Видалити чек" Click="DeleteReceiptButton_Click" Width="150" Height="35" FontSize="16" VerticalAlignment="Top" Margin="0,10,0,0"/>
+        <Button Grid.Row="0" Grid.Column="3" Content="Показати всі чеки" Click="ShowReceipts_Click" Width="150" Height="35" FontSize="16" VerticalAlignment="Top" Margin="0,10,0,0"/>
+        <Button Grid.Row="0" Grid.Column="4" Content="Фільтр + Статистика" Click="GetStatistics_Click" Width="150" Height="35" FontSize="16" VerticalAlignment="Top" Margin="0,10,0,0"/>
+        
+        <DataGrid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" x:Name="ReceiptsDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding receipts}" Margin="10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding Date, StringFormat=\{0:dd.MM.yyyy\}}" Width="100"/>
+                <DataGridTextColumn Header="Тип витрат" Binding="{Binding Type}" Width="100"/>
+                <DataGridTextColumn Header="Сума" Binding="{Binding Amount, StringFormat={}{0:N2} ₴}" Width="100"/>
+                <DataGridTextColumn Header="Опис витрат" Binding="{Binding Description}" Width="150"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StatusBar Grid.Row="2" Grid.ColumnSpan="5" VerticalAlignment="Bottom">
+            <StatusBarItem>
+                <TextBlock Name="totalAmountTextBlock" FontWeight="Bold"/>
+            </StatusBarItem>
+        </StatusBar>
+
+    </Grid>
+</Window> 

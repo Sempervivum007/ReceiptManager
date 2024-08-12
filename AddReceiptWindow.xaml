@@ -1,0 +1,35 @@
+﻿<Window x:Class="ReceiptManager.AddReceiptWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ReceiptManager"
+        mc:Ignorable="d"
+        Title="Збереження чека" Height="390" Width="555" FontSize="16">
+    <Grid>
+        <StackPanel Margin="10">
+            <TextBlock Text="Дата:" Margin="0,0,0,5" FontSize="16"/>
+            <DatePicker x:Name="DateDatePicker" Margin="0,0,0,10" FontSize="16" FirstDayOfWeek="Monday"/>
+
+            <TextBlock Text="Тип витрат:" Margin="0,0,0,5"/>
+            <ComboBox x:Name="TypeComboBox" Margin="0,0,0,10">
+                <ComboBoxItem Content="Продукти" />
+                <ComboBoxItem Content="Одяг" />
+                <ComboBoxItem Content="Книги" />
+                <ComboBoxItem Content="Квартплата" />
+                <ComboBoxItem Content="Проїзд" />
+                <ComboBoxItem Content="Медицина" />
+                <ComboBoxItem Content="Розваги" />
+                <ComboBoxItem Content="Інше" />
+            </ComboBox>
+
+            <TextBlock Text="Сума:" Margin="0,0,0,5" FontSize="16"/>
+            <TextBox x:Name="AmountTextBox" Margin="0,0,0,10" FontSize="16"/>
+
+            <TextBlock Text="Опис витрат:" Margin="0,0,0,5" FontSize="16"/>
+            <TextBox x:Name="NameTextBox" Margin="0,0,0,10" FontSize="16"/>
+
+            <Button Content="Зберегти" Width="100" Click="SaveButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

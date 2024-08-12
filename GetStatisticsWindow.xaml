@@ -1,0 +1,67 @@
+﻿<Window x:Class="ReceiptManager.GetStatisticsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ReceiptManager"
+        mc:Ignorable="d"
+        Title="Розрахунок статистики" Height="450" Width="800" FontSize="16">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition />
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition />
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="42"/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <CheckBox Grid.Row="0" Grid.Column="0" x:Name="EnableControlsDate" Content="Фільтр по даті" Checked="DateCheckBox_Checked" Margin="10,10,0,0"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" IsEnabled="{Binding IsChecked, ElementName=EnableControlsDate}" Text="Дата від:" Margin="6,0,0,5" FontSize="16"/>
+        <DatePicker Grid.Row="2" Grid.Column="0" IsEnabled="{Binding IsChecked, ElementName=EnableControlsDate}" x:Name="DatePickerFrom" Margin="6,0,0,10" FontSize="12" FirstDayOfWeek="Monday" Height="30" Width="200" HorizontalAlignment="Left"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="1" IsEnabled="{Binding IsChecked, ElementName=EnableControlsDate}" Text="Дата до:" Margin="0,0,0,5" FontSize="16"/>
+        <DatePicker Grid.Row="2" Grid.Column="1" IsEnabled="{Binding IsChecked, ElementName=EnableControlsDate}" x:Name="DatePickerTo" Margin="0,0,0,10" FontSize="12" FirstDayOfWeek="Monday" Height="30" Width="200" HorizontalAlignment="Left"/>
+
+        <CheckBox Grid.Row="3" Grid.Column="0" x:Name="EnabelControlsType" Content="Фільтр по типу витрат" Checked="TypeCheckBox_Checked" Margin="6,0,0,0"/>
+
+        <TextBlock Grid.Row="4" Grid.Column="0" IsEnabled="{Binding IsChecked, ElementName=EnabelControlsType}" Text="Тип витрат:" Margin="6,0,0,5" FontSize="16"/>
+
+        <ComboBox Grid.Row="5" Grid.Column="0" IsEnabled="{Binding IsChecked, ElementName=EnabelControlsType}" x:Name="TypeComboBox" Margin="6,0,0,10" Height="35" Width="150" HorizontalAlignment="Left">
+            <ComboBoxItem Content="Продукти" />
+            <ComboBoxItem Content="Одяг" />
+            <ComboBoxItem Content="Книги" />
+            <ComboBoxItem Content="Квартплата" />
+            <ComboBoxItem Content="Проїзд" />
+            <ComboBoxItem Content="Медицина" />
+            <ComboBoxItem Content="Розваги" />
+            <ComboBoxItem Content="Інше" />
+        </ComboBox>
+
+        <CheckBox Grid.Row="6" Grid.Column="0" x:Name="EnableControlsSum" Content="Фільтр по сумі" Checked="SumCheckBox_Checked" Margin="6,0,0,0"/>
+
+        <TextBlock Grid.Row="7" Grid.Column="0" IsEnabled="{Binding IsChecked, ElementName=EnableControlsSum}" Text="Сума від:" Margin="6,0,0,5" FontSize="16" Width="150" HorizontalAlignment="Left"/>
+        <TextBox Grid.Row="8" Grid.Column="0" IsEnabled="{Binding IsChecked, ElementName=EnableControlsSum}" x:Name="AmountTextBoxFrom" Margin="6,0,0,10" FontSize="16" Height="30" Width="150" HorizontalAlignment="Left"/>
+
+        <TextBlock Grid.Row="7" Grid.Column="1" IsEnabled="{Binding IsChecked, ElementName=EnableControlsSum}" Text="Сума до:" Margin="0,0,0,5" FontSize="16" Width="150" HorizontalAlignment="Left"/>
+        <TextBox Grid.Row="8" Grid.Column="1" IsEnabled="{Binding IsChecked, ElementName=EnableControlsSum}" x:Name="AmountTextBoxTo" Margin="0,0,0,10" FontSize="16" Height="30" Width="150" HorizontalAlignment="Left"/>
+
+        <Button Grid.Row="10" Grid.Column="0" Content="Cтатистика по типам за сумами" Width="250" Click="GetStatBySumButton_Click"/>
+        <Button Grid.Row="10" Grid.Column="1" Content="Cтатистика по типам за кількістю" Width="250" Click="GetStatByCountButton_Click"/>
+        <Button Grid.Row="10" Grid.Column="2" Content="Статистика витрат за період" Width="250" Click="GetStatByDateButton_Click"/>
+
+    </Grid>
+</Window>

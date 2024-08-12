@@ -1,0 +1,12 @@
+﻿<Window x:Class="ReceiptManager.StatisticsTypeBySumWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ReceiptManager" xmlns:oxy="http://oxyplot.org/wpf"
+        mc:Ignorable="d"
+        Title="Cтатистика по типам за сумами" Height="450" Width="800">
+    <Grid>
+        <oxy:PlotView Model="{Binding TypeBySumModel}" HorizontalAlignment="Right" Width="800" />
+    </Grid>
+</Window>
